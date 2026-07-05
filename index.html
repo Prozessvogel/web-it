@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prozessvogel IT-Service — Managed IT für kleine Unternehmen in Nienburg</title>
+<meta name="description" content="Wir übernehmen Ihre komplette IT: Arbeitsplätze, Sicherheit, Backup, Support — persönlich, vor Ort in Nienburg/Weser, zum festen Monatspreis.">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M52 50 V18 A32 32 0 0 0 20 50 Z" fill="%230f3a63"/><path d="M20 54 H52 A32 32 0 0 1 20 86 Z" fill="%230a2240"/><path d="M56 48 V18 A30 30 0 0 1 84 36 Z" fill="%23ffc20e"/></svg>'>
+<style>
+  :root{
+    --ink:#0a2240;        /* Logo: dunkles Navy */
+    --ink-soft:#48627c;
+    --bg:#ffffff;
+    --bg-soft:#f4f7fa;
+    --accent:#0f3a63;     /* Logo: mittleres Navy */
+    --accent-dark:#0a2c4e;
+    --accent-soft:#e9f0f7;
+    --gold:#ffc20e;       /* Logo: Schnabel-Gold */
+    --gold-dark:#f0b400;
+    --ok:#2e9e5b;
+    --line:#dde6ee;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;text-decoration:none;color:var(--ink)}
+  .brand svg{flex:none}
+  .brand .sub{font-weight:500;color:var(--accent)}
+  .nav a.cta{background:var(--gold);color:var(--ink);padding:9px 18px;border-radius:99px;text-decoration:none;font-weight:700;font-size:14.5px}
+  .nav a.cta:hover{background:var(--gold-dark)}
+  .navlinks{display:flex;gap:22px;align-items:center}
+  .navlinks a:not(.cta){color:var(--ink-soft);text-decoration:none;font-size:14.5px}
+  .navlinks a:not(.cta):hover{color:var(--ink)}
+  @media(max-width:720px){.navlinks a:not(.cta){display:none}}
+
+  .hero{padding:76px 0 64px;background:linear-gradient(180deg,var(--bg-soft),#fff)}
+  .hero .kicker{color:var(--accent);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+  .hero h1{font-size:clamp(30px,5vw,46px);line-height:1.15;letter-spacing:-.01em;max-width:720px}
+  .hero p.lead{font-size:clamp(16px,2.2vw,19px);color:var(--ink-soft);max-width:640px;margin:20px 0 30px}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 26px;border-radius:99px;text-decoration:none;font-weight:600;font-size:15.5px}
+  .btn.primary{background:var(--gold);color:var(--ink);font-weight:700}
+  .btn.primary:hover{background:var(--gold-dark)}
+  .btn.ghost{border:1.5px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .hero .region{margin-top:26px;font-size:14px;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+
+  section{padding:64px 0}
+  section.alt{background:var(--bg-soft)}
+  .sechead{max-width:640px;margin-bottom:38px}
+  .sechead h2{font-size:clamp(24px,3.4vw,32px);letter-spacing:-.01em;margin-bottom:10px}
+  .sechead p{color:var(--ink-soft)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card .icon{width:42px;height:42px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+  .card h3{font-size:17px;margin-bottom:6px}
+  .card p{font-size:14.5px;color:var(--ink-soft)}
+
+  .pakete{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+  .paket{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column}
+  .paket.featured{border:2px solid var(--gold);position:relative}
+  .paket.featured::before{content:"Beliebt";position:absolute;top:-12px;left:24px;background:var(--gold);color:var(--ink);font-size:12px;font-weight:700;padding:2px 12px;border-radius:99px}
+  .paket h3{font-size:19px}
+  .paket .fuer{color:var(--ink-soft);font-size:14px;margin:4px 0 18px}
+  .paket ul{list-style:none;flex:1}
+  .paket li{padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line);display:flex;gap:9px;align-items:baseline}
+  .paket li::before{content:"✓";color:var(--ok);font-weight:700;flex:none}
+  .paket li.no::before{content:"–";color:#b6c2ce}
+  .paket li.no{color:#9aa8b5}
+  .paket .preis{margin-top:18px;font-size:15px;color:var(--ink-soft)}
+  .paket .preis strong{font-size:22px;color:var(--ink)}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;counter-reset:step}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;counter-increment:step}
+  .step::before{content:counter(step);display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;margin-bottom:12px}
+  .step h3{font-size:16px;margin-bottom:5px}
+  .step p{font-size:14px;color:var(--ink-soft)}
+
+  .ueber{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+  @media(max-width:760px){.ueber{grid-template-columns:1fr}}
+  .ueber .foto{background:var(--accent-soft);border-radius:var(--radius);min-height:260px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:14px}
+
+  .kontakt-box{background:var(--ink);color:#fff;border-radius:20px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+  @media(max-width:760px){.kontakt-box{grid-template-columns:1fr}}
+  .kontakt-box h2{font-size:clamp(24px,3.4vw,32px);margin-bottom:10px}
+  .kontakt-box p{color:#b9c7d4;margin-bottom:22px}
+  .kontakt-box .wege a{display:block;color:#fff;text-decoration:none;font-size:17px;font-weight:600;padding:14px 18px;border:1px solid rgba(255,255,255,.25);border-radius:12px;margin-bottom:10px}
+  .kontakt-box .wege a:hover{background:rgba(255,255,255,.08)}
+  .kontakt-box .wege small{display:block;color:#b9c7d4;font-weight:400;font-size:13px}
+
+  footer{padding:34px 0;border-top:1px solid var(--line);margin-top:20px}
+  footer .frow{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:14px}
+  footer a{color:var(--ink-soft)}
+  footer .fam{margin-top:8px;font-size:13px}
+  footer .fam a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <!-- Prozessvogel-Bildmarke (SVG-Nachbau des Logos) -->
+      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M52 50 V18 A32 32 0 0 0 20 50 Z" fill="#0f3a63"/>
+        <path d="M20 54 H52 A32 32 0 0 1 20 86 Z" fill="#0a2240"/>
+        <path d="M56 48 V18 A30 30 0 0 1 84 36 Z" fill="#ffc20e"/>
+      </svg>
+      prozessvogel <span class="sub">IT-Service</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#pakete">Pakete</a>
+      <a href="#ablauf">So läuft's</a>
+      <a href="#kontakt" class="cta">Erstgespräch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker">Managed IT für Nienburg &amp; Umgebung</div>
+    <h1>Ihre IT läuft.<br>Sie haben den Kopf frei.</h1>
+    <p class="lead">Wir übernehmen die komplette IT Ihres Betriebs — Arbeitsplätze, Sicherheit, Backup, Support. Persönlich, vor Ort und zum festen Monatspreis. Für Unternehmen mit 2 bis 50 Mitarbeitenden.</p>
+    <div class="btnrow">
+      <a class="btn primary" href="#kontakt">Kostenloses Erstgespräch</a>
+      <a class="btn ghost" href="#leistungen">Was wir übernehmen</a>
+    </div>
+    <div class="region">📍 Nienburg/Weser — wenn's brennt, sind wir da. Nicht in einer Hotline.</div>
+  </div>
+</section>
+
+<section id="leistungen">
+  <div class="wrap">
+    <div class="sechead">
+      <h2>Wir kümmern uns. Um alles.</h2>
+      <p>Sie sollen arbeiten können, ohne an IT zu denken. Das hier passiert im Hintergrund:</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="icon">💻</div><h3>Arbeitsplätze &amp; Geräte</h3><p>PCs, Laptops, Drucker, Telefone — eingerichtet, verwaltet, ausgetauscht. Neue Mitarbeitende sind am ersten Tag arbeitsfähig.</p></div>
+      <div class="card"><div class="icon">🔄</div><h3>Updates &amp; Wartung</h3><p>Alle Systeme bleiben aktuell, ohne dass jemand daran denken muss. Wartung läuft im Hintergrund — nicht während Sie arbeiten.</p></div>
+      <div class="card"><div class="icon">🛡️</div><h3>Sicherheit &amp; Backup</h3><p>Virenschutz, Firewall, tägliche Datensicherung. Wenn etwas schiefgeht, ist morgen alles wieder da.</p></div>
+      <div class="card"><div class="icon">☁️</div><h3>Microsoft 365 &amp; Cloud</h3><p>E-Mail, Kalender, gemeinsame Dateien — sauber eingerichtet, sicher verwaltet, ohne Lizenz-Wirrwarr.</p></div>
+      <div class="card"><div class="icon">📞</div><h3>Support, der rangeht</h3><p>Kein Ticket-Nirwana: Sie rufen an, wir helfen — per Fernwartung sofort, und wenn nötig, kommen wir vorbei.</p></div>
+      <div class="card"><div class="icon">🤝</div><h3>Beratung auf Augenhöhe</h3><p>Was anschaffen, was nicht, was kostet es wirklich? Ehrliche Empfehlungen statt Verkaufsgespräch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pakete" class="alt">
+  <div class="wrap">
+    <div class="sechead">
+      <h2>Ein fester Preis. Keine Überraschungen.</h2>
+      <p>Monatlich, transparent, jederzeit kündbar zum Quartalsende. Die genauen Preise besprechen wir im Erstgespräch — sie richten sich nach Zahl der Arbeitsplätze.</p>
+    </div>
+    <div class="pakete">
+      <div class="paket">
+        <h3>Basis</h3><div class="fuer">Für Betriebe bis ~10 Mitarbeitende</div>
+        <ul>
+          <li>Monitoring, Updates &amp; Wartung</li>
+          <li>Sicherheit &amp; tägliches Backup</li>
+          <li>Support werktags (Fernwartung)</li>
+          <li class="no">Vor-Ort-Einsätze nach Aufwand</li>
+          <li class="no">Digitalisierungs-Check</li>
+        </ul>
+        <div class="preis">ab <strong>Preis auf Anfrage</strong></div>
+      </div>
+      <div class="paket featured">
+        <h3>Rundum</h3><div class="fuer">Für Betriebe bis ~25 Mitarbeitende</div>
+        <ul>
+          <li>Alles aus Basis</li>
+          <li>Vor-Ort-Kontingent inklusive</li>
+          <li>Microsoft 365 komplett verwaltet</li>
+          <li>Geräte-Beschaffung &amp; Einrichtung</li>
+          <li>Jährlicher Digitalisierungs-Check</li>
+        </ul>
+        <div class="preis">ab <strong>Preis auf Anfrage</strong></div>
+      </div>
+      <div class="paket">
+        <h3>Rundum+</h3><div class="fuer">Für Betriebe bis ~50 Mitarbeitende</div>
+        <ul>
+          <li>Alles aus Rundum</li>
+          <li>Erweiterte Support-Zeiten</li>
+          <li>Vor-Ort-Einsätze inklusive</li>
+          <li>Server-/Terminalserver-Betreuung</li>
+          <li>Digitalisierungs-Check je Quartal</li>
+        </ul>
+        <div class="preis"><strong>Auf Anfrage</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ablauf">
+  <div class="wrap">
+    <div class="sechead">
+      <h2>So läuft's</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Kennenlernen</h3><p>Kostenloses Erstgespräch — gern bei Ihnen im Betrieb.</p></div>
+      <div class="step"><h3>Bestandsaufnahme</h3><p>Wir schauen uns Ihre IT an und sagen ehrlich, was gut ist und was nicht.</p></div>
+      <div class="step"><h3>Übernahme</h3><p>Wir richten alles ein und übernehmen den laufenden Betrieb.</p></div>
+      <div class="step"><h3>Ruhe</h3><p>Sie arbeiten, wir kümmern uns. Fester Monatspreis, keine Überraschungen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="ueber">
+  <div class="wrap ueber">
+    <div>
+      <div class="sechead" style="margin-bottom:16px">
+        <h2>IT aus Nienburg — nicht aus der Warteschleife</h2>
+      </div>
+      <p style="color:var(--ink-soft)">Hinter Prozessvogel IT-Service steht Constantin Vogel aus Nienburg/Weser. Ich betreue Unternehmen in der Region — vom Handwerksbetrieb bis zur Kanzlei — und bin der eine Ansprechpartner für alles, was einen Stecker oder ein Passwort hat.<br><br>
+      <!-- TODO: 2–3 persönliche Sätze von Constantin: Werdegang, Referenzen, warum regional. --></p>
+    </div>
+    <div class="foto">Foto von Constantin (Platzhalter)</div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="kontakt-box">
+      <div>
+        <h2>Lernen wir uns kennen.</h2>
+        <p>30 Minuten, kostenlos, unverbindlich — bei Ihnen im Betrieb oder per Telefon. Danach wissen Sie, woran Sie mit Ihrer IT sind. Versprochen.</p>
+      </div>
+      <div class="wege">
+        <a href="mailto:it@prozessvogel.de">it@prozessvogel.de<small>Wir antworten am selben Werktag</small></a>
+        <a href="tel:+49">0 50 21 / … <small>Mo–Fr, 8–17 Uhr</small></a>
+        <!-- TODO: Cal.com-Buchungslink ergänzen -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap frow">
+    <div>
+      © 2026 Prozessvogel — Constantin Vogel, Nienburg/Weser
+      <div class="fam">Ein Teil von <a href="https://prozessvogel.de">prozessvogel.de</a> · bald auch: ki.prozessvogel.de · digitalisierung.prozessvogel.de</div>
+    </div>
+    <div>
+      <a href="/impressum.html">Impressum</a> · <a href="/datenschutz.html">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
